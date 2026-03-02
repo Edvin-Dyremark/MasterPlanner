@@ -1,0 +1,272 @@
+[
+  {
+    "id": "tddd27",
+    "name": "advanced web programming",
+    "code": "TDDD27",
+    "period": "VT2",
+    "level": "A1X",
+    "credits": "PRA: 6",
+    "block": "3"
+  },
+  {
+    "id": "tddd17",
+    "name": "information security",
+    "code": "TDDD17",
+    "period": "HT1",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "2"
+  },
+  {
+    "id": "tdde09",
+    "name": "natural language processing",
+    "code": "TDDE09",
+    "period": "HT1",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "1"
+  },
+  {
+    "id": "tdde15",
+    "name": "advanced machine learning",
+    "code": "TDDE15",
+    "period": "HT2",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "2"
+  },
+  {
+    "id": "tdde16",
+    "name": "text mining",
+    "code": "TDDE16",
+    "period": "HT2",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "1"
+  },
+  {
+    "id": "tdde18",
+    "name": "programming c++",
+    "code": "TDDE18",
+    "period": "HT1",
+    "level": "G2X",
+    "credits": "TEN: 2, LAB: 4",
+    "block": "3"
+  },
+  {
+    "id": "tddd38",
+    "name": "advanced programming in c++",
+    "code": "TDDD38",
+    "period": "HT1-VT2",
+    "level": "A1X",
+    "credits": "LAB: 6",
+    "block": "4"
+  },
+  {
+    "id": "tddd95",
+    "name": "algorithmic problem solving",
+    "code": "TDDD95",
+    "period": "HT1-HT2",
+    "level": "A1X",
+    "credits": "UPG: 6",
+    "block": "4"
+  },
+  {
+    "id": "tddd97",
+    "name": "web programming",
+    "code": "TDDD97",
+    "period": "HT2",
+    "level": "G2X",
+    "credits": "TEN: 2, PRA: 4",
+    "block": "3"
+  },
+  {
+    "id": "tddc17",
+    "name": "artificial intelligence",
+    "code": "TDDC17",
+    "period": "VT1",
+    "level": "G2X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "1"
+  },
+  {
+    "id": "tddd37",
+    "name": "database technology",
+    "code": "TDDD37",
+    "period": "HT2",
+    "level": "G2X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "4"
+  },
+  {
+    "id": "tdde01",
+    "name": "machine learning",
+    "code": "TDDE01",
+    "period": "HT1",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "2"
+  },
+  {
+    "id": "tddd92",
+    "name": "interactive systems",
+    "code": "TDDD92",
+    "period": "VT1",
+    "level": "A1X",
+    "credits": "PRA: 6",
+    "block": "2"
+  },
+  {
+    "id": "tdde07",
+    "name": "bayesian learning",
+    "code": "TDDE07",
+    "period": "VT1",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "1"
+  },
+  {
+    "id": "tsrt12",
+    "name": "modern control theory",
+    "code": "TSRT12",
+    "period": "HT2",
+    "level": "A1X",
+    "credits": "TEN: 4, LAB: 2",
+    "block": "1"
+  },
+  {
+    "id": "tsks33",
+    "name": "complex networks and big data",
+    "code": "TSKS33",
+    "period": "HT2",
+    "level": "A1X",
+    "credits": "TEN: 4, LAB: 2",
+    "block": "3"
+  },
+  {
+    "id": "tddd04",
+    "name": "software testing",
+    "code": "TDDD04",
+    "period": "VT1",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "3"
+  },
+  {
+    "id": "tddc88",
+    "name": "software engineering",
+    "code": "TDDC88",
+    "period": "HT1-HT2",
+    "level": "G2X",
+    "credits": "PRA: 12",
+    "block": "2"
+  },
+  {
+    "id": "tddd96",
+    "name": "software engineering - bachelor project",
+    "code": "TDDD96",
+    "period": "VT1-VT2",
+    "level": "G2X",
+    "credits": "PRA: 18",
+    "block": "1"
+  },
+  {
+    "id": "tata24",
+    "name": "linear algebra",
+    "code": "TATA24",
+    "period": "HT1",
+    "level": "G1X",
+    "credits": "TEN: 8",
+    "block": "1"
+  },
+  {
+    "id": "tdde44",
+    "name": "cyber security",
+    "code": "TDDE44",
+    "period": "VT2",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "2"
+  },
+  {
+    "id": "tdde46",
+    "name": "computer graphics",
+    "code": "TDDE46",
+    "period": "VT1",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "4"
+  },
+  {
+    "id": "tddd23",
+    "name": "design and programming of computer games",
+    "code": "TDDD23",
+    "period": "HT1-HT2",
+    "level": "A1X",
+    "credits": "PRA: 6",
+    "block": "3"
+  },
+  {
+    "id": "tddd56",
+    "name": "multicore and gpu programming",
+    "code": "TDDD56",
+    "period": "HT2",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "3"
+  },
+  {
+    "id": "tdde31",
+    "name": "big data analytics",
+    "code": "TDDE31",
+    "period": "VT2",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "3"
+  },
+  {
+    "id": "tddd41",
+    "name": "data mining",
+    "code": "TDDD41",
+    "period": "HT1",
+    "level": "A1X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "4"
+  },
+  {
+    "id": "tdde19",
+    "name": "advanced project course - ai and machine learning",
+    "code": "TDDE19",
+    "period": "VT1-VT2",
+    "level": "A1X",
+    "credits": "PRA: 12",
+    "block": "4"
+  },
+  {
+    "id": "tddd08",
+    "name": "logic programming",
+    "code": "TDDD08",
+    "period": "HT2",
+    "level": "G2X",
+    "credits": "TEN: 3, LAB: 3",
+    "block": "2"
+  },
+  {
+    "id": "tddd14",
+    "name": "formal languages and automata theory",
+    "code": "TDDD14",
+    "period": "VT1",
+    "level": "G2X",
+    "credits": "TEN: 4, UPG: 2",
+    "block": "2"
+  },
+  {
+    "id": "tddd20",
+    "name": "design and analysis of algorithms",
+    "code": "TDDD20",
+    "period": "VT1",
+    "level": "A1X",
+    "credits": "TEN: 4, LAB: 2",
+    "block": "3"
+  }
+]

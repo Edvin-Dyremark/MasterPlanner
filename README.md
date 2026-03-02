@@ -1,46 +1,53 @@
-# Master Planner
+# MasterPlanner
 
-## Project Overview
+A course planner for LiU (Linköping University) master's students. Plan your semesters by searching and placing courses into a grid organized by period and block.
 
-Master Planner is a web application designed to simplify the process of selecting master courses for students at LiU university. This project was created as part of the course: TDDD27 - Advanced programming.
+## Tech Stack
 
-## Functional Specification
+- **Vue 3** — frontend framework
+- **Vue Router 4** — hash-based routing for GitHub Pages compatibility
+- **Firebase Auth** — user authentication (login/signup)
+- **Firebase Firestore** — user plan storage
+- **Local JSON** — course catalog (`src/data/courses.json`)
+- **GitHub Pages** — hosting
 
-### Users
+## Getting Started
 
-- Registration & Authentication: Users must be logged in to use the website and related tools.
+```bash
+npm install
+npm run serve
+```
 
-### Courses
+## Scripts
 
-Course Creation: Users can add courses, entering the following information:
+| Command | Description |
+|---------|-------------|
+| `npm run serve` | Start dev server with hot-reload |
+| `npm run build` | Production build to `dist/` |
+| `npm run lint` | Lint and auto-fix |
 
-- Course Name
-- Course Code
-- Schedule Block
-- Exam format
-- Level & Credits (advanced, basic)
+## Adding Courses
 
-Sharing: Created courses are searchable and available for selection for other users.
+Edit `src/data/courses.json`. Each course object has:
 
-### Planner
+```json
+{
+  "id": "tddd27",
+  "name": "advanced web programming",
+  "code": "TDDD27",
+  "period": "VT2",
+  "level": "A1X",
+  "credits": "6",
+  "block": "1"
+}
+```
 
-- Calendar: Seleced courses should be automatically added to a sort of "grid", with year/period on one axis and schedule block on the other.
-- Users should have the option to select multiple courses in the same block, and adding additional columns for extracurricular or work related activities.
+- `name` — lowercase (used for search matching)
+- `code` — uppercase course code
+- `period` — `HT1`, `HT2`, `VT1`, `VT2`, or ranges like `HT1-HT2`
+- `level` — `G1X`, `G2X`, or `A1X`
+- `block` — schedule block (`1`–`4`)
 
-### Master's Requirement Check
+## Deployment
 
-- The application automatically checks and verifies that finished "plans" meet the neccessary credit requirements
-
-## Technological Specification
-
-### Frontend
-
-Vue.js, chosen for its simplicity, detailed documentation and easy-of-use.
-
-### Backend
-
-Firebase, providing solutions for hosting and authentication without server management
-
-#### Server
-
-Firestore, part of the firebase platform. offers Real-time data syncronization and integration with firebase services.
+Pushes to `main` automatically deploy to GitHub Pages via the workflow in `.github/workflows/deploy.yml`.

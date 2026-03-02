@@ -14,9 +14,6 @@
       <li>
         <router-link to="/about"> About </router-link>
       </li>
-      <li>
-        <router-link to="/add-course"> Add Course </router-link>
-      </li>
       <li v-if="user"><router-link to="/profile">Profile</router-link></li>
       <!-- Only visible when logged in -->
       <li v-if="!user"><router-link to="/login">Login</router-link></li>
