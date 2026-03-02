@@ -4,9 +4,6 @@
 
 Master Planner is a web application designed to simplify the process of selecting master courses for students at LiU university. This project was created as part of the course: TDDD27 - Advanced programming.
 
-- Website Demo: <https://drive.google.com/file/d/1aZ7uFOXfAHeyf-OkIM0hrl5VzsPmXNCP/view?usp=sharing>
-- Code Demo: <https://drive.google.com/file/d/1V31PLz-FSDqlXDG4yDvgCGeQNga_Uw3-/view?usp=sharing>
-
 ## Functional Specification
 
 ### Users
