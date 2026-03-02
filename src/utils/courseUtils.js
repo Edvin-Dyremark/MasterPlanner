@@ -1,6 +1,5 @@
 import { ref } from "vue";
 import { saveUserPlan } from "../supabase/saveUserPlan";
-import allCourses from "@/data/courses.json";
 
 /**
  * Manages course selections within the application.
@@ -23,25 +22,7 @@ export function courseSelection() {
 }
 
 /**
- * Fetches course data from local JSON by course names.
- */
-export async function fetchCoursesByNames(courseNames) {
-  return allCourses.filter((c) => courseNames.includes(c.name));
-}
-
-/**
- * Fetches course data from local JSON by course IDs.
- */
-export async function fetchCoursesByIds(courseIds) {
-  if (!courseIds.length || courseIds.some((id) => !id)) {
-    console.error("Invalid or empty IDs provided", courseIds);
-    return [];
-  }
-  return allCourses.filter((c) => courseIds.includes(c.id));
-}
-
-/**
- * Saves a list of courses to the user's plan in Firestore.
+ * Saves a list of courses to the user's plan.
  */
 export function savePlan(courses) {
   const coursesToSave = courses.map((course) => ({

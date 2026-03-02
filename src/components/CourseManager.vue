@@ -13,34 +13,35 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import allCourses from "@/data/courses.json";
+import { fetchAllCourses } from "@/supabase/courseService";
 import SearchBar from "./SearchBar.vue";
 import SearchList from "./SearchList.vue";
 
 const courses = ref([]);
+const allCourses = ref([]);
 const emit = defineEmits(["select-course"]);
 
-function fetchCourses(searchTerm) {
+function filterCourses(searchTerm) {
   const term = searchTerm.toLowerCase();
   if (!term) {
-    courses.value = allCourses;
+    courses.value = allCourses.value;
     return;
   }
-  courses.value = allCourses.filter(
+  courses.value = allCourses.value.filter(
     (c) => c.name.includes(term) || c.code.toLowerCase().includes(term)
   );
 }
 
 function onSearch(searchTerm) {
-  fetchCourses(searchTerm);
+  filterCourses(searchTerm);
 }
 
 function onSelectCourse(course) {
   emit("select-course", course);
 }
 
-// Load all courses on mount
-onMounted(() => {
-  fetchCourses("");
+onMounted(async () => {
+  allCourses.value = await fetchAllCourses();
+  courses.value = allCourses.value;
 });
 </script>
