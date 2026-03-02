@@ -1,12 +1,14 @@
 import { ref } from "vue";
-import { auth } from "../firebase/firebaseConfig";
-import { onAuthStateChanged } from "firebase/auth";
+import { supabase } from "../supabase/supabaseClient";
 
 const user = ref(null);
 
-// Listen for changes in the authentication state
-onAuthStateChanged(auth, (firebaseUser) => {
-  user.value = firebaseUser;
+supabase.auth.getSession().then(({ data: { session } }) => {
+  user.value = session?.user ?? null;
+});
+
+supabase.auth.onAuthStateChange((_event, session) => {
+  user.value = session?.user ?? null;
 });
 
 export function useAuth() {

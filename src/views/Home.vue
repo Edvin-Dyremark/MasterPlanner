@@ -20,7 +20,7 @@ import CreditRequirements from "../components/CreditRequirements.vue";
 import CourseManager from "../components/CourseManager.vue";
 import { courseSelection, savePlan } from "../utils/courseUtils";
 import { onMounted } from "vue";
-import { loadUserPlan } from "../firebase/loadUserPlan";
+import { loadUserPlan } from "../supabase/loadUserPlan";
 
 export default {
   name: "Home",

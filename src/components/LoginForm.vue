@@ -1,6 +1,6 @@
 <!-- LoginForm Component
 - Provides a user interface for logging in.
-- Uses Firebase for authentication
+- Uses Supabase for authentication
 -->
 
 <template>
@@ -15,11 +15,12 @@
 
 <script>
 import { ref } from "vue";
-import { auth } from "../firebase/firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "vue-router";
+import { supabase } from "../supabase/supabaseClient";
 
 export default {
   setup() {
+    const router = useRouter();
     const email = ref("");
     const password = ref("");
     const error = ref("");
@@ -27,8 +28,12 @@ export default {
     const loginUser = async () => {
       error.value = "";
       try {
-        await signInWithEmailAndPassword(auth, email.value, password.value);
-        this.$router.push("/profile");
+        const { error: authError } = await supabase.auth.signInWithPassword({
+          email: email.value,
+          password: password.value,
+        });
+        if (authError) throw authError;
+        router.push("/profile");
       } catch (err) {
         error.value = err.message;
       }

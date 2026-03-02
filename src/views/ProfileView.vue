@@ -16,36 +16,40 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import { auth } from "../firebase/firebaseConfig";
-import { signOut } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebase/firebaseConfig";
+import { useRouter } from "vue-router";
+import { supabase } from "../supabase/supabaseClient";
 
 export default {
   setup() {
-    // Fetch user data on mount if user is authenticated
-    const user = ref(auth.currentUser);
+    const router = useRouter();
+    const user = ref(null);
     const username = ref("");
 
-    onMounted(() => {
-      if (auth.currentUser) {
-        user.value = auth.currentUser;
-        fetchUserData();
+    onMounted(async () => {
+      const {
+        data: { user: currentUser },
+      } = await supabase.auth.getUser();
+      if (currentUser) {
+        user.value = currentUser;
+        await fetchUserData();
       }
     });
 
     async function fetchUserData() {
-      // Retrieve specific user data from Firestore
-      const userDoc = await getDoc(doc(db, "users", user.value.uid));
-      if (userDoc.exists()) {
-        username.value = userDoc.data().username;
+      const { data } = await supabase
+        .from("profiles")
+        .select("username")
+        .eq("id", user.value.id)
+        .single();
+      if (data) {
+        username.value = data.username;
       }
     }
 
     const logout = async () => {
       try {
-        await signOut(auth);
-        this.$router.push("/login");
+        await supabase.auth.signOut();
+        router.push("/login");
       } catch (error) {
         console.error("Logout error:", error);
       }

@@ -6,8 +6,8 @@ A course planner for LiU (Linköping University) master's students. Plan your se
 
 - **Vue 3** — frontend framework
 - **Vue Router 4** — hash-based routing for GitHub Pages compatibility
-- **Firebase Auth** — user authentication (login/signup)
-- **Firebase Firestore** — user plan storage
+- **Supabase Auth** — user authentication (email/password login & signup)
+- **Supabase (PostgreSQL)** — user profiles and plan storage
 - **Local JSON** — course catalog (`src/data/courses.json`)
 - **GitHub Pages** — hosting
 

@@ -3,7 +3,7 @@
  */
 
 import { createRouter, createWebHashHistory } from "vue-router";
-import { auth } from "../firebase/firebaseConfig";
+import { supabase } from "../supabase/supabaseClient";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import LoginView from "../views/LoginView.vue";
@@ -29,12 +29,16 @@ const router = createRouter({
 });
 
 // Global navigation guard to handle authentication-required routes
-router.beforeEach((to) => {
+router.beforeEach(async (to) => {
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
-  const isAuthenticated = auth.currentUser;
 
-  if (requiresAuth && !isAuthenticated) {
-    return { name: "Login" };
+  if (requiresAuth) {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    if (!session) {
+      return { name: "Login" };
+    }
   }
 });
 

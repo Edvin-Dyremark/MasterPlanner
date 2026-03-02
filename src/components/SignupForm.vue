@@ -1,6 +1,6 @@
 <!-- SignupForm Component
 - Provides a user interface for account creation.
-- Uses Firebase for authentication and stores user data.
+- Uses Supabase for authentication and stores user data.
 -->
 
 <template>
@@ -16,13 +16,12 @@
 
 <script>
 import { ref } from "vue";
-import { auth } from "../firebase/firebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { db } from "../firebase/firebaseConfig";
-import { doc, setDoc } from "firebase/firestore";
+import { useRouter } from "vue-router";
+import { supabase } from "../supabase/supabaseClient";
 
 export default {
   setup() {
+    const router = useRouter();
     const username = ref("");
     const email = ref("");
     const password = ref("");
@@ -31,15 +30,17 @@ export default {
     const signup = async () => {
       errorMessage.value = "";
       try {
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email.value,
-          password.value
-        );
-        const user = userCredential.user;
-        // Store the username in Firestore under the user's UID.
-        await setDoc(doc(db, "users", user.uid), { username: username.value });
-        this.$router.push("/profile");
+        const { data, error } = await supabase.auth.signUp({
+          email: email.value,
+          password: password.value,
+        });
+        if (error) throw error;
+
+        await supabase
+          .from("profiles")
+          .insert({ id: data.user.id, username: username.value });
+
+        router.push("/profile");
       } catch (error) {
         errorMessage.value = error.message;
       }

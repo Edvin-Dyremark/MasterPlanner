@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { saveUserPlan } from "../firebase/saveUserPlan";
+import { saveUserPlan } from "../supabase/saveUserPlan";
 import allCourses from "@/data/courses.json";
 
 /**
