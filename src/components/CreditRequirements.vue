@@ -62,7 +62,7 @@ const advancedCreditsA1XText = computed(() => {
   grid-template-columns: repeat(2, 1fr);
   background-color: var(--color-header);
   color: var(--color-text);
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border: 1px solid var(--color-border);
   overflow: hidden;
   text-align: center;
   font-size: var(--font-size-base);

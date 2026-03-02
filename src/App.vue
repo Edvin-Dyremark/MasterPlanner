@@ -7,11 +7,15 @@
 
 <script>
 import Navbar from "./components/NavBar.vue";
+import { useTheme } from "./store/theme";
 
 export default {
   name: "App",
   components: {
     Navbar,
+  },
+  setup() {
+    useTheme();
   },
 };
 </script>
@@ -59,6 +63,19 @@ export default {
   --font-size-base: 1rem;
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
+}
+
+[data-theme="light"] {
+  --color-bg: #f5f5f7;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f0f0f2;
+  --color-border: #d4d4d8;
+  --color-text: #18181b;
+  --color-text-muted: #71717a;
+  --color-header: #e8e8ec;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 *,

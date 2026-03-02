@@ -71,8 +71,7 @@ export default {
 
 <style scoped>
 .home-container {
-  max-width: 1200px;
   margin: var(--space-lg) auto;
-  padding: 0 var(--space-md);
+  padding: 0 var(--space-sm);
 }
 </style>

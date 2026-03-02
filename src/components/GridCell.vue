@@ -4,20 +4,21 @@
 
 <template>
   <div class="grid-cell cell">
-    <div v-if="courses.length">
+    <div v-if="courses.length" class="course-list">
       <div
         v-for="course in courses"
         :key="course.id"
         :class="['course-entry', { 'custom-course': course.created_by }]"
         @click="removeCourse(course)"
       >
-        <div>{{ course.code }}</div>
-        <div>{{ capitalCase(course.name) }}</div>
-        <div>{{ course.credits }}</div>
-        <div>{{ course.examination }}</div>
+        <div class="course-top">
+          <span class="course-code">{{ course.code }}</span>
+          <span class="course-credits">{{ course.credits }}</span>
+        </div>
+        <div class="course-name">{{ capitalCase(course.name) }}</div>
       </div>
     </div>
-    <div v-else>Empty</div>
+    <div v-else class="empty-cell">Empty</div>
   </div>
 </template>
 
@@ -40,12 +41,10 @@ function removeCourse(course) {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
   min-height: 80px;
   border: 1px solid var(--color-border);
   background-color: var(--color-surface);
-  text-align: center;
   cursor: pointer;
   transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
@@ -55,10 +54,13 @@ function removeCourse(course) {
   box-shadow: inset 0 0 0 1px var(--color-accent);
 }
 
+.course-list {
+  width: 100%;
+}
+
 .course-entry {
   width: 100%;
   padding: var(--space-xs);
-  margin-bottom: var(--space-xs);
   border-radius: var(--radius-sm);
   transition: background-color var(--transition-fast);
 }
@@ -68,11 +70,41 @@ function removeCourse(course) {
 }
 
 .course-entry:not(:last-child) {
+  margin-bottom: var(--space-xs);
   border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-xs);
 }
 
-.course-entry div {
-  margin-bottom: 2px;
+.course-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-code {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+}
+
+.course-credits {
+  font-size: 0.75rem;
+  background-color: var(--color-surface-hover);
+  color: var(--color-text-muted);
+  padding: 1px 6px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.course-name {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.3;
+}
+
+.empty-cell {
+  text-align: center;
+  color: var(--color-text-muted);
   font-size: var(--font-size-sm);
 }
 

@@ -75,7 +75,6 @@ const style = computed(() => ({
 .planner-grid {
   display: grid;
   grid-template-columns: auto repeat(var(--total-blocks), 1fr);
-  border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);

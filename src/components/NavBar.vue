@@ -15,20 +15,26 @@
         <router-link to="/about"> About </router-link>
       </li>
       <li v-if="user"><router-link to="/profile">Profile</router-link></li>
-      <!-- Only visible when logged in -->
       <li v-if="!user"><router-link to="/login">Login</router-link></li>
       <li v-if="!user"><router-link to="/signup">Signup</router-link></li>
+      <li>
+        <button class="theme-toggle" @click="toggleTheme">
+          {{ isDark ? '\u2600' : '\u263E' }}
+        </button>
+      </li>
     </ul>
   </nav>
 </template>
 
 <script>
 import { useAuth } from "../store/auth";
+import { useTheme } from "../store/theme";
 
 export default {
   setup() {
     const { user } = useAuth();
-    return { user };
+    const { isDark, toggleTheme } = useTheme();
+    return { user, isDark, toggleTheme };
   },
 };
 </script>
@@ -78,5 +84,21 @@ export default {
 .navbar a.router-link-active {
   color: var(--color-text);
   border-bottom-color: var(--color-accent);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  padding: 2px 8px;
+  line-height: 1;
+  transition: border-color var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-accent);
 }
 </style>
