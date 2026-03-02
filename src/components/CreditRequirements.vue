@@ -63,6 +63,7 @@ const advancedCreditsA1XText = computed(() => {
   background-color: var(--color-header);
   color: var(--color-text);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
   overflow: hidden;
   text-align: center;
   font-size: var(--font-size-base);

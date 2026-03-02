@@ -23,6 +23,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10vh;
+  min-height: 80vh;
+  padding-top: var(--space-xl);
 }
 </style>
