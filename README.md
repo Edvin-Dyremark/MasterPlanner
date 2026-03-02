@@ -27,10 +27,6 @@ Sharing: Created courses are searchable and available for selection for other us
 - Calendar: Seleced courses should be automatically added to a sort of "grid", with year/period on one axis and schedule block on the other.
 - Users should have the option to select multiple courses in the same block, and adding additional columns for extracurricular or work related activities.
 
-Here is an early preview of the structure of a "Master Plan":
-
-![Master Plan Preview](Master_Plan_Prev.png)
-
 ### Master's Requirement Check
 
 - The application automatically checks and verifies that finished "plans" meet the neccessary credit requirements
