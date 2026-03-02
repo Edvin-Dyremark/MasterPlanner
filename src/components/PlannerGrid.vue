@@ -44,13 +44,14 @@ const props = defineProps({
 });
 const emit = defineEmits(["remove-course"]);
 
-const totalPeriods = 8;
 const totalBlocks = 4;
-const periodPrefixes = ["HT1", "HT2", "VT1", "VT2"];
-const years = ["1", "2"];
+const periodsPerYear = {
+  "1": ["HT1", "HT2", "VT1", "VT2"],
+  "2": ["HT1", "HT2"],
+};
 
 const gridStructure = computed(() =>
-  createGridStructure(totalPeriods, totalBlocks, periodPrefixes, years)
+  createGridStructure(totalBlocks, periodsPerYear)
 );
 const organizedCourses = computed(() =>
   organizeCoursesIntoGrid(

@@ -1,25 +1,20 @@
 /**
- * Creates a grid structure for representing periods and blocks..
+ * Creates a grid structure for representing periods and blocks.
+ * periodsPerYear is an object mapping year to its period prefixes,
+ * e.g. { "1": ["HT1","HT2","VT1","VT2"], "2": ["HT1","HT2"] }
  */
-export function createGridStructure(
-  totalPeriods,
-  totalBlocks,
-  periodPrefixes,
-  years
-) {
+export function createGridStructure(totalBlocks, periodsPerYear) {
   let grid = {};
-  for (let period = 0; period < totalPeriods; period++) {
-    let yearIndex = Math.floor(period / periodPrefixes.length);
-    let year = years[yearIndex];
-    let periodKey = `${year} - ${
-      periodPrefixes[period % periodPrefixes.length]
-    }`;
-    grid[periodKey] = {
-      name: periodKey,
-      courses: Array(totalBlocks)
-        .fill()
-        .map(() => []),
-    };
+  for (const [year, periods] of Object.entries(periodsPerYear)) {
+    for (const period of periods) {
+      let periodKey = `${year} - ${period}`;
+      grid[periodKey] = {
+        name: periodKey,
+        courses: Array(totalBlocks)
+          .fill()
+          .map(() => []),
+      };
+    }
   }
   return grid;
 }
