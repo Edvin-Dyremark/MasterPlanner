@@ -78,6 +78,7 @@ const style = computed(() => ({
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
 }
 
 .cell {

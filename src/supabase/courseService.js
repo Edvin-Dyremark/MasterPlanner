@@ -38,6 +38,7 @@ export async function insertCourse(course) {
       block: course.block,
       level: course.level,
       credits: course.credits,
+      subject: course.subject || "",
       created_by: user.id,
     })
     .select()

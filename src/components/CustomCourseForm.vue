@@ -1,7 +1,7 @@
 <template>
   <div v-if="user" class="custom-course-wrapper">
     <button class="toggle-btn" @click="isOpen = !isOpen">
-      {{ isOpen ? "− Cancel" : "+ Add Custom Course" }}
+      {{ isOpen ? "− Cancel" : "+ Add Course" }}
     </button>
 
     <form v-if="isOpen" class="custom-course-form" @submit.prevent="handleSubmit">
@@ -63,6 +63,16 @@
       </div>
 
       <div class="form-group">
+        <label for="cc-subject">Subject</label>
+        <input
+          id="cc-subject"
+          v-model="form.subject"
+          type="text"
+          placeholder="e.g. Computer Science"
+        />
+      </div>
+
+      <div class="form-group">
         <label>Year</label>
         <div class="radio-group">
           <label>
@@ -108,6 +118,7 @@ const form = reactive({
   block: "",
   level: "",
   credits: "",
+  subject: "",
   year: "",
 });
 
@@ -118,6 +129,7 @@ function resetForm() {
   form.block = "";
   form.level = "";
   form.credits = "";
+  form.subject = "";
   form.year = "";
   errorMsg.value = "";
 }
@@ -133,6 +145,7 @@ async function handleSubmit() {
     block: form.block,
     level: form.level,
     credits: form.credits,
+    subject: form.subject,
   });
 
   submitting.value = false;

@@ -6,36 +6,62 @@
 
 <template>
   <div>
-    <SearchBar @search="onSearch" />
+    <SearchBar @search="onSearch" @filter-change="onFilterChange" />
     <CustomCourseForm @add-custom-course="onAddCustomCourse" />
-    <SearchList :courses="courses" @select-course="onSelectCourse" />
+    <SearchList :courses="filteredCourses" @select-course="onSelectCourse" />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, reactive, computed, onMounted } from "vue";
 import { fetchAllCourses, invalidateCache } from "@/supabase/courseService";
 import SearchBar from "./SearchBar.vue";
 import SearchList from "./SearchList.vue";
 import CustomCourseForm from "./CustomCourseForm.vue";
 
-const courses = ref([]);
 const allCourses = ref([]);
 const emit = defineEmits(["select-course"]);
 
-function filterCourses(searchTerm) {
-  const term = searchTerm.toLowerCase();
-  if (!term) {
-    courses.value = allCourses.value;
-    return;
+const filters = reactive({
+  text: "",
+  period: "",
+  level: "",
+  block: "",
+});
+
+const filteredCourses = computed(() => {
+  let result = allCourses.value;
+
+  if (filters.text) {
+    const term = filters.text.toLowerCase();
+    result = result.filter(
+      (c) => c.name.toLowerCase().includes(term) || c.code.toLowerCase().includes(term)
+    );
   }
-  courses.value = allCourses.value.filter(
-    (c) => c.name.includes(term) || c.code.toLowerCase().includes(term)
-  );
-}
+
+  if (filters.period) {
+    result = result.filter((c) => c.period === filters.period);
+  }
+
+  if (filters.level) {
+    result = result.filter((c) => c.level === filters.level);
+  }
+
+  if (filters.block) {
+    result = result.filter((c) => String(c.block) === filters.block);
+  }
+
+  return result;
+});
 
 function onSearch(searchTerm) {
-  filterCourses(searchTerm);
+  filters.text = searchTerm;
+}
+
+function onFilterChange({ period, level, block }) {
+  filters.period = period;
+  filters.level = level;
+  filters.block = block;
 }
 
 function onSelectCourse(course) {
@@ -46,11 +72,9 @@ async function onAddCustomCourse(course) {
   emit("select-course", course);
   invalidateCache();
   allCourses.value = await fetchAllCourses();
-  courses.value = allCourses.value;
 }
 
 onMounted(async () => {
   allCourses.value = await fetchAllCourses();
-  courses.value = allCourses.value;
 });
 </script>
