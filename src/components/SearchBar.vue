@@ -60,12 +60,12 @@ function emitFilters() {
   margin-top: var(--space-lg);
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
 }
 
 .search-input {
-  width: 90%;
+  width: 100%;
+  box-sizing: border-box;
   padding: var(--space-sm) var(--space-md);
   margin-bottom: var(--space-md);
   border: 1px solid var(--color-border);
@@ -90,7 +90,7 @@ function emitFilters() {
 .filter-row {
   display: flex;
   gap: var(--space-sm);
-  width: 90%;
+  width: 100%;
   margin-bottom: var(--space-sm);
 }
 
