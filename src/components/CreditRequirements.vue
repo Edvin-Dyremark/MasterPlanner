@@ -60,21 +60,20 @@ const advancedCreditsA1XText = computed(() => {
 .credit-requirements {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  background-color: #333;
-  color: white;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  background-color: var(--color-header);
+  color: var(--color-text);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
   text-align: center;
-  font-size: 16px;
+  font-size: var(--font-size-base);
+  font-weight: 500;
 }
 
 .credit-cell {
-  padding: 10px;
-  border-right: 1px solid #ccc;
-  background-color: #333;
+  padding: var(--space-md);
 }
 
-.credit-cell:last-child {
-  border-right: none;
+.credit-cell:first-child {
+  border-right: 1px solid var(--color-border);
 }
 </style>

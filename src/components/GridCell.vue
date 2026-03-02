@@ -8,7 +8,7 @@
       <div
         v-for="course in courses"
         :key="course.id"
-        class="course-entry"
+        :class="['course-entry', { 'custom-course': course.created_by }]"
         @click="removeCourse(course)"
       >
         <div>{{ course.code }}</div>
@@ -41,29 +41,42 @@ function removeCourse(course) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 8px;
-  border: 1px solid #ddd;
-  margin: 2px;
-  background-color: #f0f0f0;
+  padding: var(--space-sm);
+  min-height: 80px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
   text-align: center;
   cursor: pointer;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .grid-cell:hover {
-  background-color: #8d8d8d;
+  border-color: var(--color-accent);
+  box-shadow: inset 0 0 0 1px var(--color-accent);
 }
 
 .course-entry {
   width: 100%;
-  padding: 4px;
-  margin-bottom: 4px;
+  padding: var(--space-xs);
+  margin-bottom: var(--space-xs);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.course-entry:hover {
+  background-color: rgba(239, 68, 68, 0.15);
 }
 
 .course-entry:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .course-entry div {
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  font-size: var(--font-size-sm);
+}
+
+.custom-course {
+  border-left: 3px solid var(--color-accent);
 }
 </style>

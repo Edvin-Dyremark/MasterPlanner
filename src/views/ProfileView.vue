@@ -61,9 +61,40 @@ export default {
 
 <style scoped>
 .profile-view {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
+  max-width: 480px;
+  margin: var(--space-2xl) auto;
+  padding: var(--space-xl);
   text-align: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.profile-view h1 {
+  margin: 0 0 var(--space-lg);
+  font-size: var(--font-size-xl);
+  color: var(--color-text);
+}
+
+.profile-view p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.profile-view button {
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-danger);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.profile-view button:hover {
+  background-color: var(--color-danger-hover);
 }
 </style>

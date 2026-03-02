@@ -35,46 +35,48 @@ export default {
 
 <style scoped>
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  color: white;
-  padding: 15px 30px;
-  font-size: 20px;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-size-base);
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 24px;
-  color: #00aaff;
+  font-weight: 700;
+  font-size: var(--font-size-xl);
+}
+
+.logo a {
+  color: var(--color-accent);
+  text-decoration: none;
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
+  gap: var(--space-lg);
   margin: 0;
   padding: 0;
 }
 
-.navbar ul li {
-  padding: 0 15px;
-}
-
 .navbar a {
-  color: white;
+  color: var(--color-text-muted);
   text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.navbar .login-button {
-  padding: 10px 20px;
-  background: #2277ff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.navbar .login-button:hover {
-  background: #0055cc;
+.navbar a:hover,
+.navbar a.router-link-active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
 }
 </style>

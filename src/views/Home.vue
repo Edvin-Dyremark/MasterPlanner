@@ -4,7 +4,7 @@
 -->
 
 <template>
-  <div>
+  <div class="home-container">
     <CreditRequirements :courses="selectedCourses" />
     <PlannerGrid
       :courses="selectedCourses"
@@ -68,3 +68,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.home-container {
+  max-width: 1200px;
+  margin: var(--space-lg) auto;
+  padding: 0 var(--space-md);
+}
+</style>

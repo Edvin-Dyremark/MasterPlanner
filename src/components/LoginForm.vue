@@ -48,16 +48,66 @@ export default {
 .login-form {
   display: flex;
   flex-direction: column;
-  max-width: 300px;
-  margin: auto;
-  padding: 20px;
+  max-width: 380px;
+  margin: var(--space-2xl) auto;
+  padding: var(--space-xl);
   align-items: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
-.login-form input,
-.login-form button {
-  margin-top: 10px;
-  padding: 10px;
+.login-form h2 {
+  margin: 0 0 var(--space-lg);
+  color: var(--color-text);
+}
+
+.login-form input {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
   width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.login-form input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.15);
+}
+
+.login-form button {
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  width: 100%;
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.login-form button:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.login-form p {
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-sm);
 }
 </style>

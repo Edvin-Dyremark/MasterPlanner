@@ -7,15 +7,17 @@
 <template>
   <div>
     <SearchBar @search="onSearch" />
+    <CustomCourseForm @add-custom-course="onAddCustomCourse" />
     <SearchList :courses="courses" @select-course="onSelectCourse" />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { fetchAllCourses } from "@/supabase/courseService";
+import { fetchAllCourses, invalidateCache } from "@/supabase/courseService";
 import SearchBar from "./SearchBar.vue";
 import SearchList from "./SearchList.vue";
+import CustomCourseForm from "./CustomCourseForm.vue";
 
 const courses = ref([]);
 const allCourses = ref([]);
@@ -38,6 +40,13 @@ function onSearch(searchTerm) {
 
 function onSelectCourse(course) {
   emit("select-course", course);
+}
+
+async function onAddCustomCourse(course) {
+  emit("select-course", course);
+  invalidateCache();
+  allCourses.value = await fetchAllCourses();
+  courses.value = allCourses.value;
 }
 
 onMounted(async () => {

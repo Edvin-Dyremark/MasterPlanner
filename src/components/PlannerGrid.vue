@@ -75,20 +75,32 @@ const style = computed(() => ({
 .planner-grid {
   display: grid;
   grid-template-columns: auto repeat(var(--total-blocks), 1fr);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
 }
 
 .cell {
-  padding: 10px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
   text-align: left;
 }
 
-.grid-header,
-.cell:nth-child(5n + 1) {
-  font-weight: bold;
-  background-color: #333;
-  color: white;
+.grid-header {
+  font-weight: 600;
+  background-color: var(--color-header);
+  color: var(--color-text);
   text-align: center;
+  font-size: var(--font-size-sm);
+}
+
+.grid-side {
+  font-weight: 600;
+  background-color: var(--color-header);
+  color: var(--color-text);
+  text-align: center;
+  font-size: var(--font-size-sm);
 }
 </style>

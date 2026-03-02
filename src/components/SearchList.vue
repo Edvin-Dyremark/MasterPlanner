@@ -82,58 +82,73 @@ function addCourse(course, year) {
   width: 95%;
   list-style: none;
   padding: 0;
-  border: 1px solid #ccc;
-  margin-top: 5px;
+  margin-top: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
+
 .course-item {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
   cursor: pointer;
+  transition: background-color var(--transition-fast);
 }
+
 .course-item:last-child {
   border-bottom: none;
 }
 
-.course-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.course-main-info {
-  font-size: 16px;
-  font-weight: bold;
-}
-.course-sub-info {
-  font-size: 14px;
-  color: #666;
-  margin-top: 5px;
-}
 .course-item:hover {
-  background-color: #f9f9f9;
+  background-color: var(--color-surface-hover);
+}
+
+.course-main-info {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.course-sub-info {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
 }
 
 .year-selection {
   display: flex;
   align-items: center;
-  margin-left: 10px;
+  margin-top: var(--space-sm);
+  gap: var(--space-md);
 }
+
 .year-selection label {
-  margin: 0 10px;
   cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
 }
+
 input[type="radio"] {
-  margin: 0;
+  accent-color: var(--color-accent);
+  margin-right: var(--space-xs);
 }
+
 button {
-  padding: 8px 15px;
-  margin-left: 10px;
-  background-color: #7e7e7e;
+  padding: var(--space-xs) var(--space-md);
+  background-color: var(--color-accent);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  transition: background-color var(--transition-fast);
 }
+
 button:hover {
-  background-color: #686868;
+  background-color: var(--color-accent-hover);
 }
 </style>
