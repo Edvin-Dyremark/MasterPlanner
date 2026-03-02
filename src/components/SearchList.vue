@@ -79,7 +79,8 @@ function addCourse(course, year) {
 
 <style scoped>
 .results-list {
-  width: 95%;
+  width: 100%;
+  box-sizing: border-box;
   list-style: none;
   padding: 0;
   margin-top: var(--space-sm);
