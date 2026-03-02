@@ -10,6 +10,13 @@
       :courses="selectedCourses"
       @remove-course="handleRemoveCourse"
     />
+    <button
+      v-if="user"
+      class="save-plan-btn"
+      @click="handleSavePlan"
+    >
+      Save Plan
+    </button>
     <CourseManager @select-course="onSelectCourse" />
   </div>
 </template>
@@ -19,8 +26,9 @@ import PlannerGrid from "../components/PlannerGrid.vue";
 import CreditRequirements from "../components/CreditRequirements.vue";
 import CourseManager from "../components/CourseManager.vue";
 import { courseSelection, savePlan } from "../utils/courseUtils";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { loadUserPlan } from "../supabase/loadUserPlan";
+import { useAuth } from "../store/auth";
 
 export default {
   name: "Home",
@@ -31,9 +39,9 @@ export default {
   },
   setup() {
     const { selectedCourses } = courseSelection();
+    const { user } = useAuth();
 
     const onSelectCourse = (course) => {
-      // Adds a course to the selected courses
       if (
         !selectedCourses.value.some(
           (c) => c.id === course.id && c.year === course.year
@@ -45,7 +53,6 @@ export default {
     };
 
     function handleRemoveCourse(courseId) {
-      // Removes a course from the selected courses based on ID
       const index = selectedCourses.value.findIndex(
         (course) => course.id === courseId
       );
@@ -55,16 +62,30 @@ export default {
       }
     }
 
-    onMounted(async () => {
-      // Load and set the user plan on component mount
+    async function loadPlan() {
       const courses = await loadUserPlan();
       if (courses.length > 0) {
         courses.forEach((course) => onSelectCourse(course));
-        console.log("Courses set in selectedCourses:", selectedCourses.value);
+      }
+    }
+
+    onMounted(() => {
+      loadPlan();
+    });
+
+    watch(user, (newUser, oldUser) => {
+      if (newUser && !oldUser) {
+        loadPlan();
+      } else if (!newUser) {
+        selectedCourses.value = [];
       }
     });
 
-    return { selectedCourses, onSelectCourse, handleRemoveCourse };
+    function handleSavePlan() {
+      savePlan(selectedCourses.value);
+    }
+
+    return { selectedCourses, onSelectCourse, handleRemoveCourse, handleSavePlan, user };
   },
 };
 </script>
@@ -73,5 +94,24 @@ export default {
 .home-container {
   margin: var(--space-lg) auto;
   padding: 0 var(--space-sm);
+}
+
+.save-plan-btn {
+  display: block;
+  margin: var(--space-md) auto;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.save-plan-btn:hover {
+  background-color: var(--color-accent-hover);
 }
 </style>

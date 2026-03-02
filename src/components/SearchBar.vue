@@ -57,7 +57,7 @@ function emitFilters() {
 
 <style scoped>
 .search-bar {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-md);
   display: flex;
   flex-direction: column;
   width: 100%;
